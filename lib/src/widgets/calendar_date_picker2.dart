@@ -278,6 +278,14 @@ class _CalendarDatePicker2State extends State<CalendarDatePicker2> {
         ..removeWhere((d) => d == null)
         ..sort((d1, d2) => d1!.compareTo(d2!));
 
+      // Actualiza siempre _selectedDates y llama a onValueChanged
+      _selectedDates = [...selectedDates];
+      widget.onValueChanged?.call(_selectedDates);
+
+      /*selectedDates
+        ..removeWhere((d) => d == null)
+        ..sort((d1, d2) => d1!.compareTo(d2!));
+
       final isValueDifferent =
           widget.config.calendarType != CalendarDatePicker2Type.single ||
               !DateUtils.isSameDay(selectedDates[0],
@@ -285,7 +293,7 @@ class _CalendarDatePicker2State extends State<CalendarDatePicker2> {
       if (isValueDifferent) {
         _selectedDates = [...selectedDates];
         widget.onValueChanged?.call(_selectedDates);
-      }
+      }*/
     });
   }
 
